@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
@@ -87,11 +88,9 @@ public class ListContactsAdapter extends BaseAdapter {
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
-//					Intent goCotact = new Intent(mContext, Contact.class);
-//					mContext.startActivity(goCotact);
 					Fragment fragment_main = new Contact(mListContacts, position);
 					FragmentManager fragmentManager = ((Activity) mContext).getFragmentManager();
-					fragmentManager.beginTransaction().replace(R.id.frame_main, fragment_main).commit();
+					fragmentManager.beginTransaction().replace(R.id.frame_main, fragment_main);
 					fragmentManager.beginTransaction().addToBackStack(null);
 				}
 			});
@@ -101,22 +100,27 @@ public class ListContactsAdapter extends BaseAdapter {
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
-					AlertDialog.Builder mBui=new AlertDialog.Builder(mContext);
-					mBui.setMessage("Are you sure you want to delete "+ people.getmName()+ " ?");
-					mBui.setBa
-					mBui.setPositiveButton("Yes", new DialogInterface. OnClickListener() {
+					final Dialog mDi = new Dialog(mContext);
+					mDi.setContentView(R.layout.dialog_layout);
+					TextView txt_title = (TextView)mDi.findViewById(R.id.dialog_txt);
+					txt_title.setText("Are you sure you want to delete   " + people.getmName() + " ?");
+					Button bnt_ok = (Button) mDi.findViewById(R.id.btn_ok);
+					bnt_ok.setOnClickListener(new OnClickListener() {
 						@Override
-						public void onClick(DialogInterface dialog, int which){
+						public void onClick(View view) {
 							mListContacts.remove(position);
 							notifyDataSetChanged();
-						}});
-					mBui.setNegativeButton("No", new DialogInterface.OnClickListener() {
-					@Override
-						public void onClick(DialogInterface dialog, int which){
-							dialog.cancel();
+							mDi.dismiss();
 						}
 					});
-					mBui.create().show();
+					Button bnt_cancel = (Button) mDi.findViewById(R.id.bnt_cancel);
+					bnt_cancel.setOnClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View view) {
+							mDi.dismiss();
+						}
+					});
+					mDi.show();
 				}
 			});
     		
