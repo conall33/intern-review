@@ -53,7 +53,7 @@ class Contact extends Fragment{
         mContactCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().finish();
+                getActivity().onBackPressed();
             }
         });
 		return v;

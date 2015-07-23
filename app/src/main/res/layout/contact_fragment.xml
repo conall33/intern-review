@@ -12,7 +12,7 @@
         android:layout_height="100dp"
         android:layout_width="match_parent"
         android:orientation="horizontal"
-        android:layout_weight="3">
+        android:layout_weight="2">
         <intership.dev.contact.CircleImageView
             android:id="@+id/contact_avatar"
             android:layout_width="80dp"
@@ -37,7 +37,7 @@
     <LinearLayout 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="8"
+        android:layout_weight="9"
         android:orientation="vertical">
         <RelativeLayout 
             android:layout_width="wrap_content"
