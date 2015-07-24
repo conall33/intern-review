@@ -11,10 +11,15 @@ public class ListContactsModel {
 		this.mName=name;
 		this.mDecription=decription;
 	}
+	public String getmName() {
+		return mName;
+	}
+	public void setmName(String mName) {
+		this.mName = mName;
+	}
 	public String getmDecription() {
 		return mDecription;
 	}
-
 	public void setmDecription(String mDecription) {
 		this.mDecription = mDecription;
 	}
@@ -24,11 +29,6 @@ public class ListContactsModel {
 	public void setmAvtar(int mAvtar) {
 		this.mAvtar = mAvtar;
 	}
-	public String getmName() {
-		return mName;
-	}
-	public void setmName(String mName) {
-		this.mName = mName;
-	}
+
 
 }

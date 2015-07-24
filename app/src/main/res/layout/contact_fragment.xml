@@ -52,7 +52,8 @@
 	            android:hint="Abc"
 	            android:gravity="center_vertical"
 	            android:textSize="20sp"
-	            android:textColor="#505050"/>
+	            android:textColor="#505050"
+                android:background="@android:color/transparent"/>
         </RelativeLayout>
         <RelativeLayout 
             android:layout_width="wrap_content"
@@ -67,7 +68,8 @@
 	            android:hint="Very handsomes, Very handsomes, Very handsomes, Very handsomes, Very handsomes, Very handsomes, Very handsomes, Very handsomes"
 	            android:gravity="center_vertical"
 	            android:textSize="20sp"
-	            android:textColor="#505050"/>
+	            android:textColor="#505050"
+                android:background="@android:color/transparent"/>
         </RelativeLayout>
         
     </LinearLayout>

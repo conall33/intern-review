@@ -1,8 +1,8 @@
 package intership.dev.contact;
-import org.w3c.dom.Text;
+
 import android.annotation.SuppressLint;
+import android.widget.Button;
 import android.app.Fragment;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,14 +15,16 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 @SuppressLint("NewApi")
-class Contact extends Fragment{
+class ContactFragment extends Fragment{
     int pos;
+    ListContactsModel mModel;
+    ListContactsData mContactData;
     ImageView mContactAvatar, mContact_img_left;
 	TextView mContactName;
 	EditText mContactEditName, mContactEditDecription;
 	Button mContactSave,mContactCancel;
     ArrayList<ListContactsModel> mListContact;
-    public Contact(ArrayList<ListContactsModel> mArr, int pos){
+    public ContactFragment(ArrayList<ListContactsModel> mArr, int pos){
         this.mListContact=mArr;
         this.pos=pos;
     }
@@ -39,17 +41,25 @@ class Contact extends Fragment{
 		mContactCancel = (Button) v.findViewById(R.id.contact_bntcancel);
 
         mContactAvatar.setImageResource(mListContact.get(pos).getmAvtar());
-        mContactName.setText(mListContact.get(pos).getmName());
         mContactEditName.setText(mListContact.get(pos).getmName());
         mContactEditDecription.setText(mListContact.get(pos).getmDecription());
-
+        mContactName.setText(mContactEditName.getText().toString());
+        mContactSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String mName = mContactEditName.getText().toString();
+                String mDecription = mContactEditDecription.getText().toString();
+                mListContact.get(pos).setmName(mName);
+                mListContact.get(pos).setmDecription(mDecription);
+                getActivity().onBackPressed();
+            }
+        });
         mContact_img_left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            getActivity().onBackPressed();
+                getActivity().onBackPressed();
             }
         });
-
         mContactCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
