@@ -96,18 +96,17 @@ public class ListContactsFragment extends Fragment{
     }
     public ArrayList<ListContactsModel> getMore(int size){
         // TODO get contact to show in contacts list
-        // If contacts list is empty then get 8 contacts
-        // Else get max is 2
+        //contacts list get 8 contacts
         if (size == 0){
             for (int i = 0; i < 8; i++){
                 mContacts.add(mContacts.get(i));
             }
             } else {
             if (size < mContacts.size()){
-                mContacts.add(mContacts.get(size));
+                mContacts.add(mContacts.get(8));
             }
             if (size + 1 < mContacts.size()){
-                mContacts.add(mContacts.get(size + 1));
+                mContacts.add(mContacts.get(8));
             }
         }
         return mContacts;
